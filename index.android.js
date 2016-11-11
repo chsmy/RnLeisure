@@ -10,15 +10,14 @@ import {
   StyleSheet,
   Text,
   View,
-  Navigator
+  Navigator,
 } from 'react-native';
-import HomePage from './appcode/HomePage'
+import LoginPage from './appcode/LoginPage'
 export default class Leisure extends Component {
   render() {
-      let defaultName = 'homepage';
-      let defaultComponent = HomePage;
+      let defaultName = 'loginPage';
+      let defaultComponent = LoginPage;
     return (
-      
         <Navigator
       styles = {styles.container}
       initialRoute = {{name: defaultName,component : defaultComponent}}

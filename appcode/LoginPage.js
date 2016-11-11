@@ -9,17 +9,22 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  TextInput,
+  Image,
 } from 'react-native';
 
-export default class Leisure extends Component {
+ export default class LoginPage extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-         我是首页！！！
-        </Text>
-       
+      <Text style={styles.welcome}>欢迎欢迎!</Text>
+        <Image
+          style={styles.header}
+          source={require('./imgs/launcher.png')}
+        />
+        
+        <Text style={styles.welcome}>哈哈!</Text>
       </View>
     );
   }
@@ -37,7 +42,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 10,
   },
-  
+  header: {
+     height:70,
+     width:70,
+    
+  }
 });
-
-AppRegistry.registerComponent('Leisure', () => Leisure);
+module.exports = LoginPage
+// AppRegistry.registerComponent('Leisure', () => Leisure);
