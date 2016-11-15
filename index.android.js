@@ -11,14 +11,40 @@ import {
   Text,
   View,
   Navigator,
+  BackAndroid,
+  ToastAndroid,
 } from 'react-native';
 import LoginPage from './appcode/LoginPage'
 export default class Leisure extends Component {
+   constructor (props) {
+    super(props)
+    this.handleBack = this._handleBack.bind(this)
+  }
+
+  componentDidMount () {
+    BackAndroid.addEventListener('hardwareBackPress', this.handleBack)
+  }
+
+  componentWillUnmount () {
+    BackAndroid.removeEventListener('hardwareBackPress', this.handleBack)
+  }
+
+  _handleBack () {
+    var navigator = this.navigator
+    ToastAndroid.show('收到点击返回键信息...',ToastAndroid.SHORT);
+    console.log(navigator+navigator.getCurrentRoutes());
+    if (navigator && navigator.getCurrentRoutes().length > 1) {
+      navigator.pop()
+      return true
+    }
+    return false
+  }
   render() {
       let defaultName = 'loginPage';
       let defaultComponent = LoginPage;
     return (
         <Navigator
+        ref={component => this.navigator = component}
       styles = {styles.container}
       initialRoute = {{name: defaultName,component : defaultComponent}}
       configureScene = {

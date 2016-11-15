@@ -14,7 +14,7 @@ import {
   Image,
   TouchableHighlight,
 } from 'react-native';
-import MainPage from './appcode/MainPage'
+import MainPage from './MainPage'
 export default class LoginPage extends Component {
   clickJump() {
     //因为Navigator <Component {...route.params} navigator={navigator} />传入了navigator 所以这里能取到navigator
@@ -30,6 +30,7 @@ export default class LoginPage extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>欢迎欢迎!</Text>
+        
         <Image source={{ uri: 'https://www.google.co.jp/logos/doodles/2016/sir-frederick-bantings-125th-birthday-5698163160645632.2-hp.jpg' }}
           style={{ width: 50, height: 50 }} />
         <TextInput

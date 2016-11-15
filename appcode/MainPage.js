@@ -12,11 +12,33 @@ import {
   View,
   TextInput,
   Image,
-  TouchableHighlight,
+  BackAndroid,
 } from 'react-native';
 
-export default class LoginPage extends Component {
- 
+export default class MainPage extends Component {
+ constructor (props) {
+    super(props)
+    this.handleBack = this._handleBack.bind(this)
+  }
+
+  componentDidMount () {
+    BackAndroid.addEventListener('hardwareBackPress', this.handleBack)
+  }
+
+  componentWillUnmount () {
+    BackAndroid.removeEventListener('hardwareBackPress', this.handleBack)
+  }
+
+  _handleBack () {
+    var navigator = this.navigator
+
+    if (navigator && navigator.getCurrentRoutes().length > 1) {
+      navigator.pop()
+      return true
+    }
+    return false
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -46,5 +68,5 @@ const styles = StyleSheet.create({
 
   }
 });
-module.exports = LoginPage
+module.exports = MainPage
 // AppRegistry.registerComponent('Leisure', () => Leisure);
