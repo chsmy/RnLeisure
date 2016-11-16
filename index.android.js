@@ -31,8 +31,6 @@ export default class Leisure extends Component {
 
   _handleBack () {
     var navigator = this.navigator
-    ToastAndroid.show('收到点击返回键信息...',ToastAndroid.SHORT);
-    console.log(navigator+navigator.getCurrentRoutes());
     if (navigator && navigator.getCurrentRoutes().length > 1) {
       navigator.pop()
       return true

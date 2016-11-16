@@ -30,14 +30,13 @@ export default class LoginPage extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>欢迎欢迎!</Text>
+        <Image source={require('../imgs/launcher.png')} style={styles.header}/>
         
-        <Image source={{ uri: 'https://www.google.co.jp/logos/doodles/2016/sir-frederick-bantings-125th-birthday-5698163160645632.2-hp.jpg' }}
-          style={{ width: 50, height: 50 }} />
         <TextInput
           style={styles.style_user_input}
-          placeholder='QQ号/手机号/邮箱'
+          placeholder='请输入账号'
           numberOfLines={1}
-          autoFocus={true}
+          // autoFocus={true}
           underlineColorAndroid={'transparent'}
           textAlign='center'
           />
@@ -46,7 +45,7 @@ export default class LoginPage extends Component {
           />
         <TextInput
           style={styles.style_pwd_input}
-          placeholder='密码'
+          placeholder='请输入密码'
           numberOfLines={1}
           underlineColorAndroid={'transparent'}
           secureTextEntry={true}
@@ -100,7 +99,7 @@ const styles = StyleSheet.create({
   header: {
     height: 70,
     width: 70,
-
+    alignSelf:'center',
   }
 });
 module.exports = LoginPage
