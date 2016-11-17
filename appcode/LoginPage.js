@@ -31,7 +31,6 @@ export default class LoginPage extends Component {
       <View style={styles.container}>
         <Text style={styles.welcome}>欢迎欢迎!</Text>
         <Image source={require('../imgs/launcher.png')} style={styles.header}/>
-        
         <TextInput
           style={styles.style_user_input}
           placeholder='请输入账号'
