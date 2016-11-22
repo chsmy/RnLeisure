@@ -23,13 +23,8 @@ export default class Picture extends Component {
   constructor(props) {
     super(props)
     this.pageIndex = 1;
-    this.dataArry = this.props.dataArry;
-    const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
     this.state = {
       dataSource: new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 }),
-      //  dataSource: ds.cloneWithRows([
-      //   'John', 'Joel', 'James', 'Jimmy', 'Jackson', 'Jillian', 'Julie', 'Devin'
-      // ]),
       dataArry: [],
       loadMore: false,
       isRefreshing: false,
@@ -99,6 +94,7 @@ export default class Picture extends Component {
       </View>
     );
   }
+  //Listview 的条目
   _renderItem(results) {
     return (
       <TouchableHighlight onPress={() => this._skipIntoContent(contentData)
@@ -112,6 +108,7 @@ export default class Picture extends Component {
       </TouchableHighlight>
     )
   }
+  //滑到底部加载 显示的加载动画
   _renderFooter() {
     return (
       this.state.loadMore
