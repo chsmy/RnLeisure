@@ -14,7 +14,8 @@ import {
   Image,
   TouchableHighlight,
   ListView,
-  RefreshControl
+  RefreshControl,
+  ActivityIndicator,
 } from 'react-native';
 import MainPage from './MainPage'
 import Animation from './Animation'
@@ -28,7 +29,8 @@ export default class Picture extends Component {
       dataArry: [],
       loadMore: false,
       isRefreshing: false,
-      isError: false
+      isError: false,
+      loaded: true,
     }
   }
   componentDidMount() {
@@ -43,6 +45,7 @@ export default class Picture extends Component {
         this.setState({
           dataArry: responseJson.results,
           loadMore: false,
+          loaded: false,
         });
         console.log(responseJson);
         this.pageIndex++;
@@ -70,6 +73,9 @@ export default class Picture extends Component {
   };
 
   render() {
+    if (this.state.loaded) {
+      return this.renderLoadingView();
+    }
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>Picture！</Text>
@@ -118,8 +124,19 @@ export default class Picture extends Component {
         : null
     )
   }
+  renderLoadingView() {
+    return (
+      <View style={styles.loading}>
+        <ActivityIndicator
+          animating={this.state.loaded}
+          style={[styles.centering, { height: 80 }]}
+          size="large"
+          color="red"
+          />
+      </View>
+    );
+  }
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -169,6 +186,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#252528'
+  },
+  loading: {
+    flex: 1,
+    backgroundColor: '#F5FCFF',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  centering: {
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 module.exports = Picture
